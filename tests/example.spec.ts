@@ -4,6 +4,7 @@ import { loginUsers } from '../data/login-tests';
 import { ProductPage } from '../pages/ProductPage';
 import { YourCartPage } from '../pages/YourCartPage';
 import { CheckoutInfoPage } from '../pages/CheckoutInfoPage';
+import { checkoutInfo } from '../data/checkoutinfo-tests';
 
 test('user can complete checkout', async ({ page }) => {
   const loginPage = new LoginPage(page);
@@ -19,18 +20,7 @@ test('user can complete checkout', async ({ page }) => {
   await cartPage.openCart();
   await cartPage.checkout();
 
-  await checkoutInfoPage.fillCustomerInfo({
-    title: 'Mrs.',
-    firstname: 'Frosty',
-    lastname: 'Snowman2',
-    houseNumber: '323',
-    street: 'frost',
-    subDistrict: 'rt',
-    district: 'for',
-    province: 'ktm',
-    postalcode: '20130'
-  });
-
+  await checkoutInfoPage.fillCustomerInfo(checkoutInfo.validInfo);
   await checkoutInfoPage.finish();
 });
 
@@ -38,6 +28,7 @@ test('user can complete checkout', async ({ page }) => {
 // test("user can't login with wrong username", async ({ page }) => {
 //   const loginPage = new LoginPage(page);
 //   await loginPage.goto();
+//   await loginPage.login('wrong_user', 'some_password');
 //   await loginPage.login('wrong_user', 'some_password');
 
 //   const errorMessage = await loginPage.getErrorMessage();

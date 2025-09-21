@@ -12,4 +12,7 @@ export class LoginPage {
     await this.page.getByTestId('password').fill(password);
     await this.page.getByTestId('login-button').click();
   }
+  async getErrorMessage() {
+    return this.page.getByTestId('error').innerText();
+  }
 }

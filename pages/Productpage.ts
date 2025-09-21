@@ -4,6 +4,9 @@ export class ProductPage {
   constructor(private page: Page) {}
 
   async addProductToCart(productId: number) {
-    await this.page.getByTestId(`product-${productId}`).getByTestId('add-cart-button').click();
+    await this.page
+      .getByTestId(`product-${productId}`)
+      .getByTestId('add-cart-button')
+      .click();
   }
 }

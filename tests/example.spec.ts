@@ -32,3 +32,13 @@ test('user can complete checkout', async ({ page }) => {
 
   await checkoutInfoPage.finish();
 });
+
+// try to do case cant login with wrong username but now not working
+// test("user can't login with wrong username", async ({ page }) => {
+//   const loginPage = new LoginPage(page);
+//   await loginPage.goto();
+//   await loginPage.login('wrong_user', 'some_password');
+
+//   const errorMessage = await loginPage.getErrorMessage();
+//   expect(errorMessage).toBe('Username and password do not match any user in this service');
+// });
